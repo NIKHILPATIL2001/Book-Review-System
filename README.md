@@ -1,8 +1,6 @@
-# 📚 Book Review System
+# Book Review System
 
-A RESTful API for managing books, reviews, and user authentication using Node.js, Express, MySQL, and JWT.
-
-## 🚀 Project Setup
+##  Project Setup
 
 ### 1. Clone the Repository
 
@@ -26,7 +24,7 @@ DB_NAME=book_review_db
 
 
 
-## 🛠️ Setup MySQL Database
+##  Setup MySQL Database
 
 1. Open your MySQL client and run:
 
@@ -36,7 +34,7 @@ CREATE DATABASE book_review_db;
 
 
 
-## 🔧 Running Locally
+##  Running Locally
 
 Start the development server:
 
@@ -46,21 +44,21 @@ App will be running at:
 http://localhost:3000
 
 
-## 🔐 Authentication APIs
+## Authentication APIs
 
-### ▶️ Signup
+### Signup
 
 curl -X POST http://localhost:3000/api/auth/signup \
 -H "Content-Type: application/json" \
 -d '{"username":"testuser","password":"mypassword"}'
 
-### ▶️ Login
+### Login
 
 curl -X POST http://localhost:3000/api/auth/login \
 -H "Content-Type: application/json" \
 -d '{"username":"testuser","password":"mypassword"}'
 
-S### ✅ Response
+### Response
 
 {
   "message": "Login successful",
@@ -72,46 +70,46 @@ Use the token in Authorization headers as:
 Authorization: Bearer <JWT_TOKEN>
 
 
-## 📚 Book APIs
+## Book APIs
 
-### ▶️ Add Book (Requires Auth)
+###  Add Book (Requires Auth)
 
 curl -X POST http://localhost:3000/api/books \
 -H "Authorization: Bearer <JWT_TOKEN>" \
 -H "Content-Type: application/json" \
 -d '{"title":"History of India","author":"John Smith","genre":"History"}'
 
-### ▶️ Get All Books (With Optional Filters)
+###  Get All Books (With Optional Filters)
 
 curl "http://localhost:3000/api/books?author=John%20Smith&genre=History&page=1&limit=5"
 
-### ▶️ Get Book Details by ID
+### Get Book Details by ID
 
 curl http://localhost:3000/api/books/3
 
-### ▶️ Search Books by Title
+### Search Books by Title
 
 curl "http://localhost:3000/api/books/search/title?query=history"
 
 
 
-## ✍️ Review APIs
+##  Review APIs
 
-### ▶️ Submit Review (Requires Auth)
+###  Submit Review (Requires Auth)
 
 curl -X POST http://localhost:3000/api/books/3/reviews \
 -H "Authorization: Bearer <JWT_TOKEN>" \
 -H "Content-Type: application/json" \
 -d '{"rating":5,"comment":"Excellent book!"}'
 
-### ▶️ Update Review (Requires Auth)
+### Update Review (Requires Auth)
 
 curl -X PUT http://localhost:3000/api/reviews/10 \
 -H "Authorization: Bearer <JWT_TOKEN>" \
 -H "Content-Type: application/json" \
 -d '{"rating":4,"comment":"Updated review"}'
 
-### ▶️ Delete Review (Requires Auth)
+### Delete Review (Requires Auth)
 
 curl -X DELETE http://localhost:3000/api/reviews/10 \
 -H "Authorization: Bearer <JWT_TOKEN>"
